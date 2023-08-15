@@ -1,0 +1,25 @@
+body{
+  background-repeat: no-repeat;
+  background-image: url('https://th.bing.com/th/id/R.d2edb29f3f970c36aadecbb01ed0bb79?rik=euy3GgtoVbZXjQ&riu=http%3a%2f%2fs3-us-west-2.amazonaws.com%2ftechvibes%2fwp-content%2fuploads%2f2017%2f04%2f24135159%2fNetflix-Background.jpg&ehk=Te5qPs5gcrmm6JGD3hx5pWZ%2f7tWNKhG3laqWQsQBqd4%3d&risl=&pid=ImgRaw&r=0');
+}
+
+.ImageDiv {
+  background: radial-gradient(circle, rgb(0, 0, 0), transparent);
+  border-radius: 50%;
+}
+
+.ImageDiv::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    background: linear-gradient(to bottom, transparent, rgb(66, 0, 0));
+}
+
+.body {
+  background: #000;
+  transform: translateY(-200px);
+}
