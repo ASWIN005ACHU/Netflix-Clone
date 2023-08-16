@@ -1,0 +1,110 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  padding: 10px;
+}
+
+.logo {
+  width: 150px;
+}
+
+.button-login {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.banner {
+  height: 500px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+  }
+
+  .logo {
+    width: 200px;
+  }
+
+  .dropdown {
+    margin-top: 10px;
+    width: 100%;
+  }
+}
+
+
+.card {
+  position: absolute;
+  top: 120px; 
+  left: 150px;
+  width: 300px;
+  height: 350px;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.title {
+  color: white;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.description {
+  color: white;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.play-button {
+  background-color: red;
+  color: white;
+  border: none;
+  width: 150px;
+  margin: 2% 20%;
+}
+
+
+.search-bar {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  flex: 1;
+  max-width: 300px;
+  background-color: rgba(0, 0, 0, 0); 
+  border: 1px solid white;
+  border-radius: 30px;
+  padding: 5px;
+}
+
+.search-bar input[type="text"] {
+  flex: 1;
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 5px;
+}
+
+.search-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.search-button img {
+  width: 20px;
+  filter: invert(100%);
+}
+
