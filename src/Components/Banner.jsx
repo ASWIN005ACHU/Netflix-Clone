@@ -1,37 +1,91 @@
+import { useEffect, useState } from 'react';
 import '../Style/Banner.css';
+import axios from 'axios';
+import PropTypes from 'prop-types'
+import { BASE_URL, API_KEY } from '../Urls/Url';
 
-const Navbar = () => {
+const Banner = ({ setSelectedGenre }) => {
+  const [movieInfo, setMovieInfo] = useState(null);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const fetchRandomMovie = async () => {
+      try {
+        const response = await axios.get(`${BASE_URL}/trending/movie/day?${API_KEY}&language=en-US`);
+        const randomIndex = Math.floor(Math.random() * response.data.results.length);
+        setMovieInfo(response.data.results[randomIndex]);
+        setLoaded(true);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchRandomMovie();
+
+    const interval = setInterval(fetchRandomMovie, 10000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  const genres = [
+    { id: '28', name: 'Action' },
+    { id: '12', name: 'Adventure' },
+    { id: '16', name: 'Animation' },
+    { id: '35', name: 'Comedy' },
+    { id: '80', name: 'Crime' },
+    { id: '99', name: 'Documentary' },
+    { id: '18', name: 'Drama' },
+    { id: '10751', name: 'Family' },
+    { id: '14', name: 'Fantasy' },
+    { id: '36', name: 'History' },
+    { id: '27', name: 'Horror' },
+    { id: '10402', name: 'Music' },
+    { id: '9648', name: 'Mystery' },
+    { id: '10749', name: 'Romance' },
+    { id: '878', name: 'Science Fiction' },
+    { id: '53', name: 'Thriller' },
+    { id: '10752', name: 'War' }
+  ];
+
   return (
-    <div className='banner col-12' style={{ backgroundImage: `url('https://simkl.in/fanart/11/11483902e81f040cf0_medium.jpg')` }}>
+    <div className={`banner col-12 ${loaded ? 'loaded' : ''}`} style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${movieInfo?.backdrop_path})` }}>
       <div className="navbar">
         <div className="logo">
           <img src="https://1000logos.net/wp-content/uploads/2017/05/Netflix-Logo.png" alt="Netflix Logo" width="100%" className='ml-5' />
         </div>
-        <div className="search-bar">
-          <input
-            type="text"
-            className="bg-clear padding-5px text-white border-1px white"
-            placeholder="Search"
-          />
-          <button className="search-button" type="submit">
-            <img src="https://www.freeiconspng.com/uploads/search-icon-png-21.png" alt="Search" width="20" />
-          </button>
-        </div>
-        <button className="button-login col-2 rounded mr-5">Login</button>
+        <select
+          className="SelectGenre col-2 p-2 rounded-pill text-white text-center"
+          onChange={(e) => setSelectedGenre(e.target.value)}
+        >
+          <option className='text-dark text-center' value="">Select a Genre</option>
+          {genres.map(genre => (
+            <option
+              key={genre.id}
+              className='text-white text-center'
+              value={genre.id}
+            >
+              {genre.name}
+            </option>
+          ))}
+        </select>
       </div>
-      <Card />
+      <div className='lineargnt'></div>
+      {movieInfo && (
+        <div className="card">
+          <h2 className="title text-center">{movieInfo.title}</h2>
+          <p className="description text-center">{movieInfo.overview}</p>
+          <button className="play-button p-1 rounded bg-red text-white border-none border-radius-10px">Play</button>
+        </div>
+      )}
     </div>
   );
 };
 
-const Card = () => {
-  return (
-    <div className="card">
-      <h2 className="title text-center">Movie Title</h2>
-      <p className="description text-center">Description of the movie goes here.</p>
-      <button className="play-button p-1 rounded bg-red text-white border-none border-radius-10px">Play</button>
-    </div>
-  );
+Banner.propTypes = {
+  selectedGenre: PropTypes.string.isRequired,
+  setSelectedGenre: PropTypes.func.isRequired,
 };
 
-export default Navbar;
+export default Banner;

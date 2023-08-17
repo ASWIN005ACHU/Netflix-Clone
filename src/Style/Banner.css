@@ -4,47 +4,29 @@
   align-items: center;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
   padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
 }
 
 .logo {
   width: 150px;
 }
 
-.button-login {
-  background-color: red;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-
 .banner {
+  position: relative;
   height: 500px;
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
+  transition: background-image 0.5s ease-in-out;
 }
-
-
-
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-  }
-
-  .logo {
-    width: 200px;
-  }
-
-  .dropdown {
-    margin-top: 10px;
-    width: 100%;
-  }
-}
-
 
 .card {
   position: absolute;
-  top: 120px; 
+  top: 120px;
   left: 150px;
   width: 300px;
   height: 350px;
@@ -52,6 +34,14 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  opacity: 0.5;
+  transform: translateY(20px);
+  transition: opacity 0.2s ease-in-out, transform 0.1s ease-in-out;
+}
+
+.card.loaded {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .title {
@@ -74,27 +64,22 @@
   margin: 2% 20%;
 }
 
-
-.search-bar {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  margin: 0 auto;
-  flex: 1;
-  max-width: 300px;
-  background-color: rgba(0, 0, 0, 0); 
-  border: 1px solid white;
-  border-radius: 30px;
-  padding: 5px;
+.SelectGenre {
+  background-color: red;
+  color: rgb(0, 0, 0);
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 20px;
+  padding: 0.5rem;
+  width: 100%;
+  font-size: 16px;
+  appearance: none;
+  cursor: pointer;
 }
 
-.search-bar input[type="text"] {
-  flex: 1;
-  background-color: transparent;
-  color: white;
-  border: none;
-  border-radius: 30px;
-  padding: 5px;
+option{
+  background: red;
+  margin: 2px;
+  border-radius: 2px;
 }
 
 .search-button {
@@ -103,8 +88,11 @@
   cursor: pointer;
 }
 
-.search-button img {
-  width: 20px;
-  filter: invert(100%);
+.lineargnt {
+  background: linear-gradient(to top, black, transparent);
+  height: 300px;
+  position: relative;
+  left: -20px;
+  bottom: -200px;
+  width: 102.5%;
 }
-

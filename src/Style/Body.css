@@ -1,16 +1,22 @@
 .body {
-  overflow-x: auto;
-  background-color: #000;
+  background-color: #1d1d1d;
   padding: 20px;
 }
 
 .category {
   display: flex;
+  overflow-x: auto;
+  padding: 20px;
+  background: #000;
+}
+
+.body ::-webkit-scrollbar{
+  display: none;
 }
 
 .Body-card {
   width: 200px;
-  height: 300px;
+  height: 400px;
   background-color: #333;
   margin-right: 20px;
   display: flex;
@@ -28,9 +34,30 @@
   text-align: center;
 }
 
+.titleDiv {
+  height: 55px;
+}
+
+.descriptionDiv{
+  height: 100px;
+  margin-top: 10px;
+}
+
 .poster {
-  width: 120px;
-  height: 150px;
+  position: relative;
+  width: 200px;
+  height: 250px;
+  border-radius: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.poster:hover {
+  transform: scale(1.5);
+  z-index: 999;
+}
+
+.overviewDiv {
+  height: 60px;
 }
 
 .description {
@@ -38,6 +65,10 @@
   font-size: 14px;
   text-align: center;
   margin-bottom: 5px;
+}
+
+.Bodycard{
+  padding: 10px;
 }
 
 .play-button {

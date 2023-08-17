@@ -1,3 +1,10 @@
-body{
+body {
   background: #101010;
+}
+
+* {
+  scroll-behavior: smooth;
+  font-family: 'Orbitron', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }

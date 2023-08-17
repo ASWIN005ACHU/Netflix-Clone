@@ -1,15 +1,17 @@
-import './App.css'
-import Banner from './Components/Banner'
-import Body from './Components/Body'
-
+import { useState } from 'react';
+import './App.css';
+import Banner from './Components/Banner';
+import Body from './Components/Body';
 
 function App() {
+  const [selectedGenre, setSelectedGenre] = useState('');
+
   return (
-    <>
-     <Banner/>
-     <Body/>
-    </>
-  )
+    <div>
+      <Banner selectedGenre={selectedGenre} setSelectedGenre={setSelectedGenre} />
+      <Body selectedGenre={selectedGenre} />
+    </div>
+  );
 }
 
-export default App
+export default App;
